@@ -6,10 +6,16 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: customAppBar(context),
-      body: const Center(
-        child: Text('Login Page'),
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: customAppBar(context),
+        body: const Center(
+          child: Text('Login Page'),
+        ),
       ),
     );
   }

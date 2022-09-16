@@ -8,6 +8,7 @@ import 'core/constants/app_colors.dart';
 import 'presentation/providers/auth_provider.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -19,6 +20,7 @@ void main() async {
       statusBarIconBrightness: Brightness.dark,
     ),
   );
+  Provider.debugCheckInvalidValueType = null;
   runApp(const MyApp());
 }
 
