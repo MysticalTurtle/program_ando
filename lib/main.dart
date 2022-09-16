@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.blue,
               ),
-              initialRoute: 'home_page',
+              initialRoute: 'rewards_page',
               routes: AppRouter.pages,
             );
           } else {
