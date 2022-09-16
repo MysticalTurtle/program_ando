@@ -13,6 +13,7 @@ class LoginPage extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: customAppBar(context),
+        
         body: const Center(
           child: Text('Login Page'),
         ),
