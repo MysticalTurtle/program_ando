@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     RewardProvider rewardProvider = Provider.of<RewardProvider>(context);
     return DefaultTabController(
-      initialIndex: 1,
+      initialIndex: 0,
       length: 2,
       child: Scaffold(
         appBar: AppBar(
@@ -42,16 +42,16 @@ class HomePage extends StatelessWidget {
             ],
             bottom: const TabBar(tabs: <Widget>[
               Tab(
-                icon: Icon(Icons.workspace_premium_outlined),
-                text: 'Logros',
-              ),
-              Tab(
                 icon: Icon(Icons.gps_fixed_outlined),
                 text: 'Desafios',
               ),
+              Tab(
+                icon: Icon(Icons.workspace_premium_outlined),
+                text: 'Logros',
+              ),
             ])),
         body: const TabBarView(
-          children: <Widget>[RewardsPage(), ChallengesPage()],
+          children: <Widget>[ChallengesPage(), RewardsPage()],
         ),
       ),
     );
