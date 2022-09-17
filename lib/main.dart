@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
       ],
       child: Consumer<AuthProvider>(
         builder: (context, state, child) {
-          if (state.isAuthenticated == false) {
+          if (state.isAuthenticated) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Flutter Demo',

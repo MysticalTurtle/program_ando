@@ -14,9 +14,49 @@ class LoginPage extends StatelessWidget {
       home: Scaffold(
         appBar: customAppBar(context),
         
-        body: const Center(
-          child: Text('Login Page'),
-        ),
+        body: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.all(7),
+                    child: const TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Email',
+                        border: OutlineInputBorder()
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(7),
+                    child: const TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                        border: OutlineInputBorder()
+                      ),
+                    ),
+                  ),
+                  MaterialButton(
+                    onPressed: (){},
+                    minWidth: 600.0,
+                    height: 50.0,
+                    color: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                    child: const Text(
+                      'ACCEDER',
+                      style: TextStyle(color: Colors.white),
+                    ),
+
+                  )
+                ],
+              )
+            )
+          ],
+        )
       ),
     );
   }
