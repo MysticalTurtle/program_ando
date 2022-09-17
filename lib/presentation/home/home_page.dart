@@ -31,12 +31,21 @@ class HomePage extends StatelessWidget {
               )
               ,
             ),
-            IconButton(
-              icon: const Icon(Icons.lens_rounded),
-              color: Colors.white,
-              tooltip: 'Usuario',
-              onPressed: (){},
-            ),
+            Container(
+              height: 35.0,
+              width: 35.0,
+              margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+              child: const CircleAvatar(
+                backgroundColor: Colors.white,
+                child: Text('M'),
+              ),
+            )
+            // IconButton(
+            //   icon: const Icon(Icons.lens_rounded),
+            //   color: Colors.white,
+            //   tooltip: 'Usuario',
+            //   onPressed: (){},
+            // ),
           ],
           bottom: const TabBar(
             tabs: <Widget>[

@@ -37,7 +37,7 @@ class LoginPage extends StatelessWidget {
                     child: const TextField(
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.email),
-                        hintText: 'Email',
+                        hintText: 'Correo',
                         border: OutlineInputBorder(),
                       ),
                     ),
@@ -48,7 +48,7 @@ class LoginPage extends StatelessWidget {
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.password),
                         suffixIcon: Icon(Icons.remove_red_eye_rounded),
-                        hintText: 'Password',
+                        hintText: 'Contraseña',
                         border: OutlineInputBorder()
                       ),
                     ),
