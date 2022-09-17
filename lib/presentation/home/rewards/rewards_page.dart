@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:program_ando/domain/entities/reward.dart';
 import 'package:program_ando/presentation/providers/reward_provider.dart';
-import 'package:program_ando/presentation/widgets/custom_appbar.dart';
 
 class RewardsPage extends StatefulWidget {
   const RewardsPage({super.key});
@@ -27,7 +26,6 @@ class _RewardsPageState extends State<RewardsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(context),
       // Poner el tabBar aqui, chamba de Manuel
       // PD: se puede usar el tabbar fuera del appbar, es como un widget cualquiera
       body: Container(
