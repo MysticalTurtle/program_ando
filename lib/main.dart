@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:program_ando/core/router.dart';
+import 'package:program_ando/presentation/home/challenges/challenges_page.dart';
 import 'package:program_ando/presentation/login/login_page.dart';
 import 'package:provider/provider.dart';
 
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
               routes: AppRouter.pages,
             );
           } else {
-            return const LoginPage();
+            return const ChallengesPage();
           }
         },
       ),

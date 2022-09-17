@@ -64,7 +64,7 @@ class RewardCard extends StatelessWidget {
                 color: Colors.transparent,
                 child: const Center(
                   child: Image(
-                    image: AssetImage('assets/Reward/BackgroundRewards.png'),
+                    image: AssetImage('assets/reward/BackgroundRewards.png'),
                   ),
                 ),
               ),
