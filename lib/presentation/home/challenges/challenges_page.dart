@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:program_ando/presentation/levels/levels_page.dart';
 import 'image_card.dart';
 
 class ChallengesPage extends StatelessWidget {
@@ -21,6 +22,11 @@ class ChallengesPage extends StatelessWidget {
                   child: Row(
                     children: [
                       FillImageCard(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                            return const LevelPage();
+                          }));
+                        },
                         width: 350,
                         heightImage: 180,
                         imageProvider:
@@ -40,6 +46,11 @@ class ChallengesPage extends StatelessWidget {
                   child: Row(
                     children: [
                       FillImageCard(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                            return const LevelPage();
+                          }));
+                        },
                         width: 350,
                         heightImage: 180,
                         imageProvider:
@@ -59,6 +70,11 @@ class ChallengesPage extends StatelessWidget {
                   child: Row(
                     children: [
                       FillImageCard(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                            return const LevelPage();
+                          }));
+                        },
                         width: 350,
                         heightImage: 180,
                         imageProvider:
@@ -78,6 +94,11 @@ class ChallengesPage extends StatelessWidget {
                   child: Row(
                     children: [
                       FillImageCard(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                            return const LevelPage();
+                          }));
+                        },
                         width: 350,
                         heightImage: 180,
                         imageProvider:
@@ -97,6 +118,11 @@ class ChallengesPage extends StatelessWidget {
                   child: Row(
                     children: [
                       FillImageCard(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                            return const LevelPage();
+                          }));
+                        },
                         width: 350,
                         heightImage: 180,
                         imageProvider:
@@ -116,6 +142,11 @@ class ChallengesPage extends StatelessWidget {
                   child: Row(
                     children: [
                       FillImageCard(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                            return const LevelPage();
+                          }));
+                        },
                         width: 350,
                         heightImage: 180,
                         imageProvider:

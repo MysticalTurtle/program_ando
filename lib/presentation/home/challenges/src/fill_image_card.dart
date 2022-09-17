@@ -17,6 +17,7 @@ class FillImageCard extends StatelessWidget {
     this.color = Colors.white,
     this.tagSpacing,
     this.tagRunSpacing,
+    required this.onTap,
   }) : super(key: key);
 
   /// card width
@@ -58,41 +59,49 @@ class FillImageCard extends StatelessWidget {
   /// widget footer of card
   final Widget? footer;
 
+  /// function on tap
+  final Function() onTap;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(borderRadius),
-        color: color,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(borderRadius),
-              topRight: Radius.circular(borderRadius),
+    return GestureDetector(
+      onTap: () {
+        onTap();
+      },
+      child: Container(
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(borderRadius),
+          color: color,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(borderRadius),
+                topRight: Radius.circular(borderRadius),
+              ),
+              child: Image(
+                image: imageProvider,
+                width: width,
+                height: heightImage,
+                fit: BoxFit.cover,
+              ),
             ),
-            child: Image(
-              image: imageProvider,
-              width: width,
-              height: heightImage,
-              fit: BoxFit.cover,
+            ImageCardContent(
+              contentPadding: contentPadding,
+              tags: tags,
+              title: title,
+              footer: footer,
+              description: description,
+              tagSpacing: tagSpacing,
+              tagRunSpacing: tagRunSpacing,
             ),
-          ),
-          ImageCardContent(
-            contentPadding: contentPadding,
-            tags: tags,
-            title: title,
-            footer: footer,
-            description: description,
-            tagSpacing: tagSpacing,
-            tagRunSpacing: tagRunSpacing,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
