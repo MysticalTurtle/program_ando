@@ -1,6 +1,6 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
+import 'package:program_ando/domain/entities/reward.dart';
+import 'package:program_ando/presentation/providers/reward_provider.dart';
 import 'package:program_ando/presentation/widgets/custom_appbar.dart';
 
 class RewardsPage extends StatefulWidget {
@@ -11,6 +11,19 @@ class RewardsPage extends StatefulWidget {
 }
 
 class _RewardsPageState extends State<RewardsPage> {
+  late Future<List<Reward>> _listReward;
+
+  @override
+  void initState() {
+    _listReward = RewardProvider.getRewards(idUser: 2);
+    // sort for id desc
+    _listReward.then((value) {
+      value.sort((a, b) => a.id.compareTo(b.id));
+    });
+    super.initState();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,17 +36,17 @@ class _RewardsPageState extends State<RewardsPage> {
         width: double.infinity,
         color: Colors.transparent,
         child: FutureBuilder(
-          future: Future.delayed(const Duration(seconds: 1)),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
+          future: _listReward,
+          builder: (context, AsyncSnapshot<List<Reward>> snapshot) {
+            if (snapshot.hasData) {
               return GridView.builder(
-                  itemCount: 3,
+                  itemCount: snapshot.data!.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: 1.1,
+                    childAspectRatio: 1.0,
                   ),
                   itemBuilder: (context, index) {
-                    return RewardCard();
+                    return RewardCard(reward: snapshot.data![index]);
                   });
             } else {
               return const Center(
@@ -48,36 +61,157 @@ class _RewardsPageState extends State<RewardsPage> {
 }
 
 class RewardCard extends StatelessWidget {
-  const RewardCard({super.key});
+  final dynamic reward;
+  final bool isPopup;
+  const RewardCard({super.key, required this.reward, this.isPopup = false});
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Container(
-        margin: const EdgeInsets.all(10),
-        color: Colors.transparent,
-        child: Column(
-          children: [
-            Expanded(
-              child: Container(
-                color: Colors.transparent,
-                child: const Center(
-                  child: Image(
-                    image: AssetImage('assets/Reward/BackgroundRewards.png'),
+    return InkWell(
+      onTap: () {
+        if (isPopup) {
+          Navigator.pop(context);
+        } else {
+          _showMyDialog(context, reward, isPopup);
+        }
+      },
+      child: Card(
+        // Set color hexadecimal
+        color: Colors.black,
+        elevation: 5,
+        child: Container(
+          margin: const EdgeInsets.all(10),
+          color: Colors.black,
+          child: Column(
+            children: [
+              Expanded(
+                child: Container(
+                  color: Colors.black,
+                  child: Center(
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        image: DecorationImage(
+                          image:
+                              Image.asset('assets/reward/BackgroundRewards.png')
+                                  .image,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          reward.name,
+                          style: const TextStyle(
+                            fontFamily: 'JockeyOne',
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-            Container(
-              color: Colors.yellow,
-              child: const Center(
-                child: Text('Nombre'),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
+}
+
+Future<void> _showMyDialog(
+    BuildContext context, dynamic reward, bool isPopup) async {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return GestureDetector(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(100),
+          child: SimpleDialog(
+            contentPadding: EdgeInsets.zero,
+            title: const Center(child: Text('Logro obtenido')),
+            children: [
+              (Container(
+                margin: const EdgeInsets.all(10),
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    Container(
+                      color: Colors.white,
+                      child: Center(
+                        child: Container(
+                          height: 200,
+                          width: 200,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            image: DecorationImage(
+                              image: Image.asset(
+                                      'assets/reward/BackgroundRewards.png')
+                                  .image,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              reward.name,
+                              style: const TextStyle(
+                                fontFamily: 'JockeyOne',
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 15),
+                    Container(
+                      color: Colors.white,
+                      child: Text(
+                        reward.description,
+                        style: const TextStyle(
+                          fontFamily: 'Roboto',
+                          fontSize: 15,
+                          color: Colors.black,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    )
+                  ],
+                ),
+              )),
+              SizedBox(height: 15),
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                height: 60,
+                color: const Color(0xFF007DBC),
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: const Center(
+                  child: Text(
+                    "ENTENDIDO",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: 'JockeyOne',
+                      fontSize: 15,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:program_ando/core/router.dart';
 import 'package:program_ando/presentation/login/login_page.dart';
+import 'package:program_ando/presentation/providers/reward_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'core/constants/app_colors.dart';
@@ -32,13 +33,14 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider(create: (_) => AuthProvider()),
+        Provider(create: (_) => RewardProvider()),
         // Provider(create: (_) => UserProvider()),
         // Provider(create: (_) => ChallengeProvider()),
         // Provider(create: (_) => LevelProvider()),
       ],
       child: Consumer<AuthProvider>(
         builder: (context, state, child) {
-          if (state.isAuthenticated) {
+          if (!state.isAuthenticated) {
             return MaterialApp(
               title: 'Flutter Demo',
               theme: ThemeData(
