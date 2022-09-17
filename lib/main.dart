@@ -42,6 +42,7 @@ class MyApp extends StatelessWidget {
         builder: (context, state, child) {
           if (!state.isAuthenticated) {
             return MaterialApp(
+              debugShowCheckedModeBanner: false,
               title: 'Flutter Demo',
               theme: ThemeData(
                 primarySwatch: Colors.blue,
