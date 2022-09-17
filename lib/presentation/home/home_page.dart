@@ -15,7 +15,8 @@ class HomePage extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-            title: const Text('ProgramAndo'),
+            title: Image.asset("assets/LogoHeader.png",
+                width: MediaQuery.of(context).size.width * 0.4),
             backgroundColor: Colors.blue.shade500,
             actions: <Widget>[
               IconButton(
@@ -35,7 +36,7 @@ class HomePage extends StatelessWidget {
               ),
               IconButton(
                 icon: const Icon(Icons.lens_rounded),
-                color: Colors.white,
+                color: Colors.red,
                 tooltip: 'Usuario',
                 onPressed: () {},
               ),
