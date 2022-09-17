@@ -22,11 +22,23 @@ class LoginPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
+                    height: 200.0,
+                    width: 200.0,
+                    child: const Text('Vamos a empezar',
+                      style: TextStyle(
+                        fontSize: 50,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  )
+                  ,
+                  Container(
                     margin: const EdgeInsets.all(7),
                     child: const TextField(
                       decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.email),
                         hintText: 'Email',
-                        border: OutlineInputBorder()
+                        border: OutlineInputBorder(),
                       ),
                     ),
                   ),
@@ -34,6 +46,8 @@ class LoginPage extends StatelessWidget {
                     margin: const EdgeInsets.all(7),
                     child: const TextField(
                       decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.password),
+                        suffixIcon: Icon(Icons.remove_red_eye_rounded),
                         hintText: 'Password',
                         border: OutlineInputBorder()
                       ),
