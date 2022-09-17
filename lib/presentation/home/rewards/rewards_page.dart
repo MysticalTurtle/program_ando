@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:program_ando/domain/entities/reward.dart';
 import 'package:program_ando/presentation/providers/reward_provider.dart';
+import 'package:provider/provider.dart';
 
 class RewardsPage extends StatefulWidget {
   const RewardsPage({super.key});
@@ -65,36 +66,49 @@ class RewardCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    RewardProvider rewardProvider =
+        (Provider.of<RewardProvider>(context, listen: false));
     return InkWell(
       onTap: () {
         if (isPopup) {
           Navigator.pop(context);
         } else {
-          _showMyDialog(context, reward, isPopup);
+          if (rewardProvider.nivel - 1 < reward.level) {
+          } else {
+            _showMyDialog(context, reward, isPopup);
+          }
         }
       },
       child: Card(
         // Set color hexadecimal
-        color: Colors.black,
+        color: rewardProvider.nivel - 1 < reward.level
+            ? Colors.black.withOpacity(0.5)
+            : Colors.black,
         elevation: 5,
         child: Container(
           margin: const EdgeInsets.all(10),
-          color: Colors.black,
+          color: Colors.transparent,
           child: Column(
             children: [
               Expanded(
                 child: Container(
-                  color: Colors.black,
+                  color: Colors.transparent,
                   child: Center(
                     child: Container(
                       height: 100,
                       width: 100,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Colors.transparent,
                         image: DecorationImage(
-                          image:
-                              Image.asset('assets/reward/BackgroundRewards.png')
-                                  .image,
+                          image: Image.asset(
+                            'assets/reward/BackgroundRewards.png',
+                          ).image,
+                          colorFilter: ColorFilter.mode(
+                            rewardProvider.nivel - 1 < reward.level
+                                ? Colors.black.withOpacity(0)
+                                : Colors.white,
+                            BlendMode.modulate,
+                          ),
                           fit: BoxFit.cover,
                         ),
                       ),
