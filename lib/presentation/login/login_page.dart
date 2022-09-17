@@ -13,7 +13,7 @@ class LoginPage extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: customAppBar(context),
-        
+        resizeToAvoidBottomInset: false,
         body: Column(
           children: <Widget>[
             Padding(

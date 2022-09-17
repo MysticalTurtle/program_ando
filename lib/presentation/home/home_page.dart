@@ -40,12 +40,6 @@ class HomePage extends StatelessWidget {
                 child: Text('M'),
               ),
             )
-            // IconButton(
-            //   icon: const Icon(Icons.lens_rounded),
-            //   color: Colors.white,
-            //   tooltip: 'Usuario',
-            //   onPressed: (){},
-            // ),
           ],
           bottom: const TabBar(
             tabs: <Widget>[
