@@ -13,23 +13,30 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('ProgramAndo'),
+          backgroundColor: Colors.blue.shade500,
           actions: <Widget>[
             IconButton(
               icon: const Icon(Icons.star),
+              color: Colors.yellow,
               tooltip: 'Trofeos',
               onPressed: (){},
             ),
-            IconButton(
-              icon: const Icon(Icons.crop_square_outlined),
-              tooltip: 'Trofeos',
-              onPressed: (){},
+            const Center(
+              child: Text('2',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold
+                ),
+              )
+              ,
             ),
             IconButton(
               icon: const Icon(Icons.lens_rounded),
               color: Colors.white,
               tooltip: 'Usuario',
               onPressed: (){},
-            )
+            ),
           ],
           bottom: const TabBar(
             tabs: <Widget>[
