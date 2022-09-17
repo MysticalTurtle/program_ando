@@ -173,7 +173,7 @@ Future<void> _showMyDialog(
                         ),
                       ),
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     Container(
                       color: Colors.white,
                       child: Text(
@@ -189,7 +189,7 @@ Future<void> _showMyDialog(
                   ],
                 ),
               )),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               Container(
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 height: 60,
